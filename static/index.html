@@ -1,87 +1,56 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINIA-RECON | Conciliación Inteligente</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1268B3"><title>FINIA-RECON | Financial Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-
-    <header class="header">
-        <div class="brand">
-            <h1>FINIA<span>-RECON</span></h1>
-            <p>Financial Intelligence & Reconciliation</p>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#dashboard"><span class="brand-mark">F</span><span><b>FINIA<span class="brand-accent">-RECON</span></b><small>FINANCIAL INTELLIGENCE</small></span></a>
+    <div class="workspace-label">WORKSPACE</div>
+    <nav class="nav-menu">
+      <button class="nav-link active" data-view="dashboard"><span>▦</span> Panel principal</button>
+      <button class="nav-link" data-view="reconciliation"><span>⇄</span> Conciliación</button>
+      <button class="nav-link" data-view="cases"><span>⚑</span> Gestión de casos <em id="openCaseCount">0</em></button>
+      <button class="nav-link" data-view="agent"><span>✧</span> Agente IA</button>
+      <button class="nav-link" data-view="history"><span>◷</span> Historial</button>
+    </nav>
+    <div class="sidebar-bottom"><div class="security-chip"><span class="shield">✓</span><div><b>Entorno protegido</b><small>Revisión humana habilitada</small></div></div><div class="profile"><div class="avatar">FR</div><div><b>Operador financiero</b><small>Administrador</small></div><span class="dots">•••</span></div></div>
+  </aside>
+  <main class="main-area">
+    <header class="topbar"><div><div class="breadcrumb">FINIA-RECON <span>/</span> <b id="crumb">Panel principal</b></div><div class="page-title" id="pageTitle">Centro de control</div></div><div class="top-actions"><div class="system-status"><i id="statusDot"></i><span id="systemStatus">Conectando...</span></div><button class="icon-button" title="Notificaciones">♧</button><div class="avatar small-avatar">FR</div></div></header>
+    <div class="content-area">
+      <section class="view active" id="view-dashboard">
+        <div class="welcome-row"><div><div class="eyebrow">VISIÓN GENERAL · <span id="todayLabel">OPERACIÓN FINANCIERA</span></div><h1>Hola, bienvenido a FINIA.</h1><p>Supervisa la conciliación, identifica riesgos y gestiona las excepciones desde un solo lugar.</p></div><button class="btn-primary" id="goReconcile">＋ Nueva conciliación</button></div>
+        <div class="section-heading"><div><h2>Indicadores clave</h2><p>Resumen de la última ejecución disponible</p></div><span class="last-run" id="lastRun">Sin ejecuciones recientes</span></div>
+        <div class="kpi-grid">
+          <article class="kpi-card"><div class="kpi-top"><span>Total analizado</span><span class="kpi-icon blue">▤</span></div><strong id="total">—</strong><small>Operaciones procesadas</small></article>
+          <article class="kpi-card"><div class="kpi-top"><span>Conciliadas</span><span class="kpi-icon green">✓</span></div><strong id="matched">—</strong><small>Coincidencia completa</small></article>
+          <article class="kpi-card"><div class="kpi-top"><span>Inconsistencias</span><span class="kpi-icon amber">⚠</span></div><strong id="inconsistent">—</strong><small>Diferencias detectadas</small></article>
+          <article class="kpi-card"><div class="kpi-top"><span>Alertas críticas</span><span class="kpi-icon red">!</span></div><strong id="critical">—</strong><small>Atención prioritaria</small></article>
+          <article class="kpi-card rate-card"><div class="kpi-top"><span>Tasa de conciliación</span><span class="kpi-icon blue">◉</span></div><strong id="rate">—<small>%</small></strong><div class="progress"><i id="rateBar"></i></div><small>Sobre el total de resultados</small></article>
         </div>
-        <div class="status">
-            <span class="status-dot"></span>
-            Sistema operativo
+        <div class="dashboard-grid">
+          <article class="surface"><div class="surface-heading"><div><h3>Estado de operaciones</h3><p>Distribución de resultados</p></div><span class="legend-note">Última ejecución</span></div><div class="status-chart"><div class="donut" id="donut"><div><b id="donutRate">0%</b><small>Conciliadas</small></div></div><div class="chart-legend"><div><i class="dot matched-dot"></i><span>Conciliadas</span><b id="legendMatched">0</b></div><div><i class="dot pending-dot"></i><span>Pendientes</span><b id="legendPending">0</b></div><div><i class="dot critical-dot"></i><span>Críticas</span><b id="legendCritical">0</b></div></div></div></article>
+          <article class="surface"><div class="surface-heading"><div><h3>Inconsistencias por categoría</h3><p>Volumen identificado por tipo</p></div></div><div id="categoryChart" class="bar-chart"><p class="empty">Ejecuta una conciliación para visualizar datos.</p></div></article>
         </div>
-    </header>
-
-    <main class="container">
-
-        <section class="welcome">
-            <div>
-                <h2>Centro de conciliación financiera</h2>
-                <p>
-                    Plataforma inteligente para detectar,
-                    analizar y gestionar inconsistencias financieras.
-                </p>
-            </div>
-            <button id="reconcileBtn">
-                Ejecutar conciliación
-            </button>
-        </section>
-
-        <section class="metrics">
-            <article class="metric-card">
-                <p>Total analizado</p>
-                <h2 id="total">0</h2>
-            </article>
-
-            <article class="metric-card">
-                <p>Conciliadas</p>
-                <h2 id="matched">0</h2>
-            </article>
-
-            <article class="metric-card">
-                <p>Inconsistencias</p>
-                <h2 id="inconsistent">0</h2>
-            </article>
-
-            <article class="metric-card">
-                <p>Faltantes</p>
-                <h2 id="missing">0</h2>
-            </article>
-
-            <article class="metric-card">
-                <p>Ambiguas</p>
-                <h2 id="ambiguous">0</h2>
-            </article>
-        </section>
-
-        <section class="panel">
-            <h3>Resultados de conciliación</h3>
-            <div id="results">
-                <p>Ejecuta una conciliación para visualizar los resultados.</p>
-            </div>
-        </section>
-
-        <section class="panel">
-            <h3>Alertas inteligentes</h3>
-            <div id="alerts">
-                <p>No existen alertas cargadas.</p>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        FINIA-RECON | Sistema de conciliación inteligente
-    </footer>
-
-    <script src="app.js"></script>
-</body>
-</html>
+        <div class="dashboard-grid lower-grid"><article class="surface"><div class="surface-heading"><div><h3>Operaciones recientes</h3><p>Últimos hallazgos identificados</p></div><button class="text-button" data-goto="reconciliation">Ver todas →</button></div><div id="recentTable" class="table-wrap"><p class="empty">Todavía no hay resultados.</p></div></article><article class="surface ai-preview"><div class="ai-title"><div class="ai-symbol">✧</div><div><h3>FINIA Intelligence</h3><p>Asistente de análisis financiero</p></div><span class="live-pill" id="aiPill">PREPARADO</span></div><div id="executiveAnalysis" class="ai-summary">Ejecuta una conciliación para que FINIA analice los resultados y genere recomendaciones.</div><div id="recommendationPreview" class="recommendation-preview"></div><button class="outline-button" data-goto="agent">Abrir análisis del agente →</button></article></div>
+      </section>
+      <section class="view" id="view-reconciliation"><div class="view-intro"><div><div class="eyebrow">PROCESAMIENTO DE DATOS</div><h1>Centro de conciliación</h1><p>Carga dos fuentes, ejecuta las reglas y revisa cada diferencia encontrada.</p></div></div>
+        <article class="surface upload-surface"><div class="surface-heading"><div><h3>Fuentes de información</h3><p>Formatos permitidos: CSV, XLSX y JSON · Máximo 10 MB por archivo</p></div><span class="tag">2 fuentes requeridas</span></div><form id="uploadForm"><div class="upload-grid"><label class="upload-box"><span class="upload-icon">▤</span><b>Fuente A · Sistema interno</b><small>Selecciona el archivo de transacciones internas</small><input type="file" name="internal_file" accept=".csv,.xlsx,.xls,.json"><span class="file-name" id="internalName">Usar archivo de demostración si lo dejas vacío</span></label><label class="upload-box"><span class="upload-icon">⇄</span><b>Fuente B · Procesador externo</b><small>Selecciona el archivo del procesador</small><input type="file" name="processor_file" accept=".csv,.xlsx,.xls,.json"><span class="file-name" id="processorName">Usar archivo de demostración si lo dejas vacío</span></label></div><div class="upload-footer"><span>Los archivos deben incluir transaction_id, amount, date y status.</span><button class="btn-primary" id="reconcileBtn" type="submit">Ejecutar conciliación →</button></div></form></article>
+        <div class="section-heading results-heading"><div><h2>Resultados de conciliación</h2><p>Detalle de coincidencias e inconsistencias</p></div><span id="resultCount" class="tag">Sin resultados</span></div><div class="surface"><div id="resultsTable" class="table-wrap"><p class="empty">Carga las fuentes o utiliza los datos de demostración para comenzar.</p></div></div>
+      </section>
+      <section class="view" id="view-cases"><div class="view-intro"><div><div class="eyebrow">SEGUIMIENTO OPERATIVO</div><h1>Gestión de casos</h1><p>Da seguimiento a cada inconsistencia hasta su resolución.</p></div></div><div class="case-filters"><button class="filter active" data-filter="ALL">Todos</button><button class="filter" data-filter="OPEN">Abiertos</button><button class="filter" data-filter="IN_PROGRESS">En revisión</button><button class="filter" data-filter="RESOLVED">Resueltos</button></div><div class="surface"><div id="casesTable" class="table-wrap"><p class="empty">No hay casos registrados.</p></div></div></section>
+      <section class="view" id="view-agent"><div class="view-intro"><div><div class="eyebrow">INTELIGENCIA ARTIFICIAL</div><h1>FINIA Intelligence</h1><p>Explicaciones, análisis de riesgo y recomendaciones para el operador.</p></div></div><div class="agent-grid"><article class="surface agent-main"><div class="ai-title"><div class="ai-symbol">✧</div><div><h3>Análisis ejecutivo</h3><p>Interpretación del resultado de conciliación</p></div><span class="live-pill" id="agentStatus">ESPERANDO DATOS</span></div><div id="agentExecutive" class="agent-copy">El agente analizará los hallazgos cuando ejecutes una conciliación.</div><div class="agent-subsection"><h3>Hallazgos clave</h3><div id="agentFindings" class="finding-list"><p class="empty">Sin hallazgos todavía.</p></div></div><div class="agent-subsection"><h3>Recomendaciones priorizadas</h3><div id="agentRecommendations" class="finding-list"><p class="empty">Sin recomendaciones todavía.</p></div></div></article><aside class="surface risk-panel"><h3>Evaluación de riesgo</h3><div class="risk-gauge" id="riskGauge"><b id="riskValue">—</b><small>RIESGO GLOBAL</small></div><p id="riskDescription">El nivel de riesgo se calculará después de la conciliación.</p><div class="human-control"><b>Control de supervisión</b><p>La IA recomienda; el operador decide. No se realizan ajustes financieros automáticos.</p><span>✓ Aprobación humana obligatoria</span></div></aside></div></section>
+      <section class="view" id="view-history"><div class="view-intro"><div><div class="eyebrow">TRAZABILIDAD</div><h1>Historial de ejecuciones</h1><p>Consulta las conciliaciones realizadas y sus indicadores.</p></div></div><div class="surface"><div id="historyTable" class="table-wrap"><p class="empty">No hay ejecuciones guardadas.</p></div></div></section>
+      <footer class="app-footer">FINIA-RECON · Financial Intelligence & Reconciliation Platform <span>Versión 2.0 · Entorno de desarrollo</span></footer>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script src="/app.js"></script>
+</body></html>

@@ -5,4 +5,9 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
-EOF
+EOF.env
+data/finia.db
+.env
+.env.*
+!.env.example
+*.db-journal
