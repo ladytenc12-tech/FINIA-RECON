@@ -1,0 +1,75 @@
+
+[
+  {
+    "transaction_id": "TX-001",
+    "amount": 150.00,
+    "date": "2026-11-11",
+    "status": "COMPLETED"
+  },
+  {
+    "transaction_id": "TX-002",
+    "amount": 250.00,
+    "date": "2026-11-11",
+    "status": "COMPLETED"
+  },
+  {
+    "transaction_id": "TX-003",
+    "amount": 500.00,
+    "date": "2026-11-11",
+    "status": "COMPLETED"
+  },
+  {
+    "transaction_id": "TX-004",
+    "amount": 75.00,
+    "date": "2026-11-10",
+    "status": "PENDING"
+  },
+  {
+    "transaction_id": "TX-005",
+    "amount": 320.00,
+    "date": "2026-11-11",
+    "status": "COMPLETED"
+  },
+  {
+    "transaction_id": "TX-006",
+    "amount": 180.00,
+    "date": "2026-11-11",
+    "status": "COMPLETED"
+  },
+  {
+    "transaction_id": "TX-007",
+    "amount": 90.00,
+    "date": "2026-11-11",
+    "status": "COMPLETED"
+  },
+  {
+    "transaction_id": "TX-008",
+    "amount": 210.00,
+    "date": "2026-11-11",
+    "status": "COMPLETED"
+  },
+  {
+    "transaction_id": "TX-009",
+    "amount": 400.00,
+    "date": "2026-11-11",
+    "status": "COMPLETED"
+  },
+  {
+    "transaction_id": "TX-010",
+    "amount": 125.00,
+    "date": "2026-11-11",
+    "status": "COMPLETED"
+  },
+  {
+    "transaction_id": "TX-011",
+    "amount": 60.00,
+    "date": "2026-11-11",
+    "status": "COMPLETED"
+  },
+  {
+    "transaction_id": "TX-012",
+    "amount": 800.00,
+    "date": "2026-11-11",
+    "status": "COMPLETED"
+  }
+]

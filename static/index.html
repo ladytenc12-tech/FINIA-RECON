@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINIA-RECON | Conciliación Inteligente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="brand">
+            <h1>FINIA<span>-RECON</span></h1>
+            <p>Financial Intelligence & Reconciliation</p>
+        </div>
+        <div class="status">
+            <span class="status-dot"></span>
+            Sistema operativo
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="welcome">
+            <div>
+                <h2>Centro de conciliación financiera</h2>
+                <p>
+                    Plataforma inteligente para detectar,
+                    analizar y gestionar inconsistencias financieras.
+                </p>
+            </div>
+            <button id="reconcileBtn">
+                Ejecutar conciliación
+            </button>
+        </section>
+
+        <section class="metrics">
+            <article class="metric-card">
+                <p>Total analizado</p>
+                <h2 id="total">0</h2>
+            </article>
+
+            <article class="metric-card">
+                <p>Conciliadas</p>
+                <h2 id="matched">0</h2>
+            </article>
+
+            <article class="metric-card">
+                <p>Inconsistencias</p>
+                <h2 id="inconsistent">0</h2>
+            </article>
+
+            <article class="metric-card">
+                <p>Faltantes</p>
+                <h2 id="missing">0</h2>
+            </article>
+
+            <article class="metric-card">
+                <p>Ambiguas</p>
+                <h2 id="ambiguous">0</h2>
+            </article>
+        </section>
+
+        <section class="panel">
+            <h3>Resultados de conciliación</h3>
+            <div id="results">
+                <p>Ejecuta una conciliación para visualizar los resultados.</p>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h3>Alertas inteligentes</h3>
+            <div id="alerts">
+                <p>No existen alertas cargadas.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        FINIA-RECON | Sistema de conciliación inteligente
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
